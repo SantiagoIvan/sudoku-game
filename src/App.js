@@ -7,7 +7,10 @@ const initialState = {
   dificulty: 0, //index del array de dificultades disponibles
   selectUsername: true,
   selectDificult: false,
-  boardDimension: null
+  boardDimension: null,
+  wallet: null,
+  provider: null,
+  chainId: null
 };
 
 const dificulties = [
