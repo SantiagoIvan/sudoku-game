@@ -7,15 +7,14 @@ const initialState = {
   dificulty: 0, //index del array de dificultades disponibles
   selectUsername: true,
   selectDificult: false,
-  boardDimension: null,
-  board: null
+  boardDimension: null
 };
 
 const dificulties = [
-  ["Easy", 4],
-  ["Medium", 9],
-  ["Hard", 9],
-  ["Insane", 16]
+  ["Easy", 4, 4], //dificultad, dimension del sudoku, cantidad de pistas
+  ["Medium", 9, 40],
+  ["Hard", 9, 22],
+  ["Insane", 9, 0]
 ];
 
 function reducer(state, action) {
@@ -39,9 +38,15 @@ function reducer(state, action) {
         ...state,
         gameStarted: true,
         selectDificult: false,
-        boardDimension,
-        board: Array(boardDimension).fill(Array(boardDimension).fill(0))
+        boardDimension
       };
+    case "exit":
+      return {
+        ...state,
+        gameStarted: false,
+        boardDimension: null,
+        selectUsername: true
+      }
     default:
       return state;
   }

@@ -30,9 +30,11 @@ input {
 .game {
   margin: 0 1.5rem;
 }
-.game-info {
+.container-info {
+  margin: 1rem 0;
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
+  justify-content: space-around;
   align-items: center;
   width: 100%;
   border: 2px solid white;
@@ -46,4 +48,23 @@ input {
   border-radius: 20%;
   font-size: 1.5rem;
   background-color: var(--primary-color);
+}
+.board {
+  background-color: whitesmoke;
+}
+table  {
+  border-spacing: 30px;
+  width: 100%;
+}
+
+td {
+  border: 1px solid black;
+  height: 32px;
+}
+td input {
+  background-color: inherit;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 0%;
 }
