@@ -1,24 +1,16 @@
 import "./styles.css";
 import { useRef, useReducer } from "react";
 import Game from "./components/Game";
+import { dificulties } from "./utils/sudoku_algorithms";
 
 const initialState = {
   username: "",
   dificulty: 0, //index del array de dificultades disponibles
   selectUsername: true,
   selectDificult: false,
-  boardDimension: null,
-  wallet: null,
-  provider: null,
-  chainId: null
+  sudokuDimension: null,
+  initialSudoku: null
 };
-
-const dificulties = [
-  ["Easy", 4, 4], //dificultad, dimension del sudoku, cantidad de pistas
-  ["Medium", 9, 40],
-  ["Hard", 9, 22],
-  ["Insane", 9, 0]
-];
 
 function reducer(state, action) {
   switch (action.type) {
@@ -36,19 +28,20 @@ function reducer(state, action) {
         dificulty: (state.dificulty + 1) % dificulties.length
       };
     case "game_started":
-      const boardDimension = dificulties[state.dificulty][1];
+      const sudokuDimension = dificulties[state.dificulty][1];
       return {
         ...state,
         gameStarted: true,
         selectDificult: false,
-        boardDimension
+        sudokuDimension
       };
     case "exit":
       return {
         ...state,
         gameStarted: false,
-        boardDimension: null,
-        selectUsername: true
+        sudokuDimension: null,
+        selectUsername: true,
+        initialSudoku: null
       }
     default:
       return state;
@@ -103,7 +96,7 @@ export default function App() {
           <>
             <h4>Chose dificulty</h4>
             <button className="main-btn" onClick={changeDificulty}>
-              {dificulties[state.dificulty][0]}
+              {dificulties[state.dificulty].level}
             </button>
             <button className="main-btn" onClick={start}>
               Play!
