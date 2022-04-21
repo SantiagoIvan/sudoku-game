@@ -17,28 +17,28 @@ const Game = ({ state, dispatch, dificulties }) => {
 
   const solve = async () => {
     try {
-      // const provider = new providers.Web3Provider(window.ethereum, 'any')
-      // if (!provider) {
-      //   alert('Please install MetaMask!');
-      //   return
-      // }
-      // if (window.ethereum && !window.ethereum.selectedAddress) { 
-      //   const [_firstAccount] = await window.ethereum.request({
-      //         method: "eth_requestAccounts"
-      //     })
-      // }
-      // const acc = window.ethereum.selectedAddress
-      // const owner = process.env.REACT_APP_OWNER_WALLET
-      // const price = process.env.REACT_APP_SOLUTION_PRICE
-      // const signer = provider.getSigner()
-      // const tx = {
-      //   from: acc,
-      //   to: owner,
-      //   value: utils.parseEther(price)
-      // }
+      const provider = new providers.Web3Provider(window.ethereum, 'any')
+      if (!provider) {
+        alert('Please install MetaMask!');
+        return
+      }
+      if (window.ethereum && !window.ethereum.selectedAddress) { 
+        const [_firstAccount] = await window.ethereum.request({
+              method: "eth_requestAccounts"
+          })
+      }
+      const acc = window.ethereum.selectedAddress
+      const owner = process.env.REACT_APP_OWNER_WALLET
+      const price = process.env.REACT_APP_SOLUTION_PRICE
+      const signer = provider.getSigner()
+      const tx = {
+        from: acc,
+        to: owner,
+        value: utils.parseEther(price)
+      }
 
-      // const execTx = await signer.sendTransaction(tx)
-      // await provider.waitForTransaction(execTx.hash)
+      const execTx = await signer.sendTransaction(tx)
+      await provider.waitForTransaction(execTx.hash)
       // aca podrias meter una logica para que se active un modal con un cosito girando tipo Loading
       alert("Transaction confirmed! Here is your solution")
 

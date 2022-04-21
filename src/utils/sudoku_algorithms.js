@@ -1,22 +1,3 @@
-const megaSudoku = [
-    [1,14,6,5,7,3,8,9,2,10,11,4,12,13,15,16],
-    [2,11,13,4,14,10,16,5,1,15,3,12,6,7,8,9],
-    [7,8,3,9,15,2,12,11,6,16,13,5,1,14,10,4],
-    [12,10,16,15,1,4,6,13,14,7,8,9,2,11,3,5],
-    [11,12,1,7,3,9,2,15,10,6,16,8,14,5,4,13],
-    [8,16,4,2,13,6,14,10,3,5,7,1,9,12,11,15],
-    [9,13,14,10,4,1,5,16,11,12,2,15,7,3,6,8],
-    [5,3,15,6,11,12,7,8,4,14,9,13,10,16,2,1],
-    [16,4,11,3,2,8,13,1,12,9,10,6,5,15,14,7],
-    [15,7,12,14,9,11,10,3,5,8,4,16,13,2,1,6],
-    [10,2,5,1,16,7,4,6,15,13,14,3,8,9,12,11],
-    [6,9,8,13,5,14,15,12,7,2,1,11,4,10,16,3],
-    [14,1,2,16,10,15,9,4,13,3,6,7,11,8,5,12],
-    [4,5,7,12,8,13,1,14,16,11,15,2,3,6,9,10],
-    [13,15,9,11,6,5,3,2,8,4,12,11,16,1,7,14],
-    [3,6,10,8,12,16,11,7,9,1,5,14,15,4,13,2],
-]
-
 const sudokuHard = [
     [5, 3, 4, 6, 7, 8, 9, 1, 2],
     [6, 7, 2, 1, 9, 5, 3, 4, 8],
@@ -50,9 +31,9 @@ const miniSudoku = [
 
 export const dificulties = [
     {level: "Easy", dimension: 4, clues: 4}, //dificultad, dimension del sudoku, cantidad de pistas
-    {level: "Medium", dimension: 9, clues: 50},
-    {level: "Hard", dimension: 9, clues: 30},
-    {level: "Insane", dimension: 16, clues: 200}
+    {level: "Medium", dimension: 9, clues: 55},
+    {level: "Hard", dimension: 9, clues: 35},
+    {level: "Insane", dimension: 9, clues: 17}
   ];
 
 
@@ -64,7 +45,7 @@ const dificultyToSudoku = {
     0: getDeepCopy(miniSudoku),
     1: getDeepCopy(sudokuMedium),
     2: getDeepCopy(sudokuHard),
-    3: megaSudoku
+    3: getDeepCopy(sudokuHard)
 } 
 
 
